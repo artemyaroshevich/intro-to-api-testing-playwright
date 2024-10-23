@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 import { StatusCodes } from 'http-status-codes'
+import { OrderDto } from './order-dto'
 
 test('get order with correct id should receive code 200', async ({ request }) => {
   // Build and send a GET request to the server
@@ -10,6 +11,21 @@ test('get order with correct id should receive code 200', async ({ request }) =>
   console.log('response headers:', response.headers())
   // Check if the response status is 200
   expect(response.status()).toBe(StatusCodes.OK)
+})
+
+test('post order with correct', async ({ request }) => {
+  const requestBody = OrderDto.createOrderWithRandomData()
+  const response = await request.post('https://backend.tallinn-learning.ee/test-orders', {
+    data: requestBody,
+  })
+  // Log the response status and body
+  console.log('response status:', response.status())
+  console.log('response body:', await response.json())
+  expect(response.status()).toBe(StatusCodes.OK)
+  const responseBody = await response.json()
+  expect.soft(responseBody.status).toBe('OPEN')
+  expect.soft(responseBody.courierId).toBeDefined()
+  expect.soft(responseBody.customerName).toBeDefined()
 })
 
 test('get order with incorrect id should receive code 400', async ({ request }) => {
