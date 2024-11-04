@@ -1,0 +1,5 @@
+### чеклист POST
+| № | сценарий                                                                                                |                                      тест данные                                      |
+|:-------|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------:|
+1.| Расчет оценки риска заявителя. income, debt, age, employed, loanAmount, loanPeriod                      | "income": 1, "debt": 1, "age": 16, "employed": true, "loanAmount": 3, "loanPeriod": 3 |
+2.| Проверка получения кода ответа 400 при некорректном income, debt, age, employed, loanAmount, loanPeriod | "income": 0, "debt": 0, "age": 0, "employed": true, "loanAmount": 0, "loanPeriod": 0
