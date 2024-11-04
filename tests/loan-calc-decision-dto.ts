@@ -22,7 +22,7 @@ export class LoanCalcDecisionDto {
     this.loanPeriod = loanPeriod
   }
 
-  private static calcDecision(): LoanCalcDecisionDto {
+   static calcDecision(): LoanCalcDecisionDto {
     return new LoanCalcDecisionDto(1, 1, 18, true, 2, 6)
   }
 
