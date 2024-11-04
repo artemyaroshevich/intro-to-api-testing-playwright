@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 import { StatusCodes } from 'http-status-codes'
-import { LoanCalcDecisionDto } from './loan-calc-decision-dto'
+import { LoanCalcDecisionDto } from './dto/loan-calc-decision-dto'
 
 // test('post method sign', async ({ request }) => {
 //   const requestBody = LoanCalcSignDto.createUuid()
