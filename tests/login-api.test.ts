@@ -4,6 +4,8 @@ import { LoginDto } from './dto/LoginDto'
 import { StatusCodes } from 'http-status-codes'
 const serviceURL = 'https://backend.tallinn-learning.ee/'
 const loginPath = 'login/student'
+const jwt = /^eyJhb[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/
+
 
 test.describe('Tallinn delivery API tests', () => {
   test('login with correct data', async ({ request }) => {
@@ -13,7 +15,6 @@ test.describe('Tallinn delivery API tests', () => {
     })
     expect(response.status()).toBe(StatusCodes.OK)
     const responseBody = await response.text()
-    const jwt = /^eyJhb[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/
     expect(responseBody).toMatch(jwt)
   })
 
